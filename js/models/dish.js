@@ -16,7 +16,7 @@ eatz.Dish = Backbone.Model.extend({
   
     defaults: {
       // ADD YOUR CODE HERE
-      name: "BLAH",
+      name: "Test",
       venue:"",
       info:"",
       numbr:"1265",

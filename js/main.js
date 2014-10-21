@@ -17,13 +17,12 @@ eatz.AppRouter = Backbone.Router.extend({
     },
     dishAdd : function () {
         console.log("Loading dishAdd function");
-        var dish = new eatz.Dish();
-        if(!this.dishAddView){
-            this.dishAddView = new eatz.DishAddView(dish);
+        var dish = new eatz.Dish(); //create a dish
+        if(!this.dishAddView){ //create a new view if one does not exist
+            this.dishAddView = new eatz.DishAddView({model:dish}); //give the view the model
         }
-        $('#content').html(this.dishAddView.el); 
-
-    },    
+        $('#content').html(this.dishAddView.el); //append the view in the content div
+    },
 
     browseDishes : function () {
         console.log("Loading BrowseView function");
