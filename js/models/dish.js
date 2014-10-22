@@ -16,7 +16,7 @@ eatz.Dish = Backbone.Model.extend({
   
     defaults: {
       // ADD YOUR CODE HERE
-      name: "Test",
+      name: "",
       venue:"",
       info:"",
       numbr:"1265",
@@ -28,5 +28,4 @@ eatz.Dish = Backbone.Model.extend({
     toggle: function() {
     	console.log("toggle?");
     }
-
 });

@@ -1,5 +1,5 @@
 var eatz =  eatz || {};
-var dishes = new eatz.Dishes();
+var dishes = new eatz.Dishes(); //global collection
 eatz.AppRouter = Backbone.Router.extend({
 
     routes: {
@@ -16,10 +16,10 @@ eatz.AppRouter = Backbone.Router.extend({
         this.home();
     },
     dishAdd : function () {
-        console.log("Loading dishAdd function");
+        console.log("Loading dishAdd function using EditView");
         var dish = new eatz.Dish(); //create a dish
-        if(!this.dishAddView){ //create a new view if one does not exist
-            this.dishAddView = new eatz.DishAddView({model:dish}); //give the view the model
+        if(!this.dishEditView){ //create a new view if one does not exist
+            this.dishAddView = new eatz.DishEditView({model:dish}); //give the view the model
         }
         $('#content').html(this.dishAddView.el); //append the view in the content div
     },
@@ -61,7 +61,7 @@ eatz.AppRouter = Backbone.Router.extend({
 
 });
 
-eatz.utils.loadTemplates(['HomeView', 'HeaderView', 'AboutView', 'BrowseView' , 'DishAddView'], function() {
+eatz.utils.loadTemplates(['HomeView', 'HeaderView', 'AboutView', 'BrowseView' , 'DishEditView'], function() {
     app = new eatz.AppRouter();
     Backbone.history.start();
 });
