@@ -3,13 +3,15 @@ var eatz =  eatz || {};
 // note View-name (HomeView) matches name of template HomeView.html
 eatz.HomeView = Backbone.View.extend({
 
-    initialize: function () {
-	this.render();
-    },
     events:{
-    	'click #browsebtn' : "browse",
-    	'click #addbtn' : "add"
+        'click #browsebtn' : "browse",
+        'click #addbtn' : "add"
     },
+
+    initialize: function () {
+	    this.render();
+    },
+
 
     browse:function(){
     	console.log("browse");
@@ -20,8 +22,8 @@ eatz.HomeView = Backbone.View.extend({
     	app.navigate("dishes/add",true);
     },
     render: function () {
-	this.$el.html(this.template());  // create DOM content for HomeView
-	return this;    // support chaining
+	    this.$el.html(this.template());  // create DOM content for HomeView
+	    return this;    // support chaining
     }
 
 });

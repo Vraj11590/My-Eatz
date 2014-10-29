@@ -15,13 +15,14 @@ eatz.AppRouter = Backbone.Router.extend({
         this.header();
         this.home();
     },
+
     dishAdd : function () {
         console.log("Loading dishAdd function using EditView");
         var dish = new eatz.Dish(); //create a dish
         if(!this.dishEditView){ //create a new view if one does not exist
-            this.dishAddView = new eatz.DishEditView({model:dish}); //give the view the model
+            this.dishEditView = new eatz.DishEditView({model:dish}); //give the view the model
         }
-        $('#content').html(this.dishAddView.el); //append the view in the content div
+        $('#content').html(this.dishEditView.el); //append the view in the content div
     },
 
     browseDishes : function () {
@@ -47,6 +48,7 @@ eatz.AppRouter = Backbone.Router.extend({
         if (!this.headerView) {
             this.headerView = new eatz.HeaderView();
         };
+
         $('#header').html(this.headerView.el);
     },
 
@@ -56,6 +58,8 @@ eatz.AppRouter = Backbone.Router.extend({
 
             this.aboutView = new eatz.AboutView();
         };
+
+
         $('#content').html(this.aboutView.el);
     }
 

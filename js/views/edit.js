@@ -9,6 +9,8 @@ eatz.DishEditView = Backbone.View.extend({
 	initialize: function() {
 		console.log(this.model);
 		this.render();
+
+
     },
 
     events:{
@@ -21,7 +23,12 @@ eatz.DishEditView = Backbone.View.extend({
         console.log("Saving final dish");
         console.log("final Error checking before saving");
         console.log("save the model");
-        eatz.dishes.create(this.model);
+
+
+
+
+
+
     },
     updateModel:function(event){
         console.log("Update '" + event.target.id + "' to " + event.target.value);
@@ -29,10 +36,18 @@ eatz.DishEditView = Backbone.View.extend({
         var att = event.target.id;
         var val = event.target.value;
         console.log(att + " = " + val);
+        var options = {
+           success: function() {
+               eatz.utils.passValidation(att)
+           },
+           error: function(model,error){
+               eatz.utils.failValidation(att,error);
+           }
+        };
         switch(att){
             case "name":
                 console.log("Name Attribute");
-                this.model.set({name:val});
+                this.model.set({name:val},{validate:true},options);
                 break;
             case "served":
                 console.log("served attr");
@@ -69,7 +84,7 @@ eatz.DishEditView = Backbone.View.extend({
     },
     redirect:function(){
         this.model.destroy();
-    	app.navigate('#home',true);
+    	app.navigate('#browse',true);
     },
     //render the empty fields with the data from a sample dish model
     render: function() {

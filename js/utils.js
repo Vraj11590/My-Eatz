@@ -21,5 +21,17 @@ eatz.utils = {
         });
 
         $.when.apply(null, deferreds).done(callback);
+    },
+
+    passValidation : function(inputID){
+
+    },
+
+    failValidation : function(inputID, error) {
+        _.each(error, function (error) {
+            var controlGroup = this.$('.' + error.field);
+            controlGroup.addClass('error');
+            controlGroup.find('.help-inline').text(error.message);
+        }, this);
     }
 };
